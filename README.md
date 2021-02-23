@@ -30,7 +30,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- prettier-ignore -->
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/osamamammar"><img src="https://avatars3.githubusercontent.com/u/38069997?v=4" width="100px;" alt="osamamammar"/><br /><sub><b>osamamammar</b></sub></a><br /><a href="https://github.com/mohmedeprahem/Keep-mind/commits?author=osamamammar" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/osamamammar"><img src="https://avatars.githubusercontent.com/u/42181138?s=400&u=1d4f36a838d375709a7dcd70fa77ecb53f9ee095&v=4" width="100px;" alt="osamamammar"/><br /><sub><b>osamamammar</b></sub></a><br /><a href="https://github.com/mohmedeprahem/Keep-mind/commits?author=osamamammar" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/mohmedeprahem"><img src="https://avatars.githubusercontent.com/u/37003554?s=400&u=e9e13881549e2fe00efcbed75066e96654b8a4f7&v=4" width="100px;" alt="mohmedeprahem"/><br /><sub><b>mohmedeprahem</b></sub></a><br /><a href="https://github.com/mohmedeprahem/Keep-mind/commits?author=mohmedeprahem" title="Code">💻</a></td>
   </tr>
 </table>
