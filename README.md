@@ -9,8 +9,8 @@ This is simple note web application structured by MERN Stack tool.
 - [v1](https://keepmindv1.docs.apiary.io/#).
 
 ## Database
-- [Database design](https://docs.google.com/document/d/1OJPxYx5wDiiT387RjAhCSYfIrFj1GbDk_62PXTMAmUI/edit).
-- [validation](https://docs.google.com/document/d/1DH_Bfyz0fCdvSgTR-hmatZCBBRkjVGbxlRTYVJKR15M/edit).
+- [Database design](https://docs.google.com/document/d/1OJPxYx5wDiiT387RjAhCSYfIrFj1GbDk_62PXTMAmUI/edit?usp=sharing).
+- [validation](https://docs.google.com/document/d/1DH_Bfyz0fCdvSgTR-hmatZCBBRkjVGbxlRTYVJKR15M/edit?usp=sharing).
 # Build/Run
 ## Requirement
 - Node.js
