@@ -1,0 +1,32 @@
+{
+  "name": "keepmind",
+  "version": "1.0.0",
+  "description": "create your notes",
+  "main": "app.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV='development' nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://www.opensource.org/licenses/mit-license.php"
+    }
+  ],
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "connect-mongodb-session": "^2.4.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "mongoose": "^5.11.15",
+    "morgan": "^1.10.0",
+    "nodemailer": "^6.4.18",
+    "nodemailer-sendgrid-transport": "^0.2.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "nodemon": "^2.0.7"
+  }
+}
