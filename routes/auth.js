@@ -8,8 +8,6 @@ const router = express.Router();
 const { postSignUp } = require('../controllers/auth');
 
 // Run middlewares
-router
-    .route(`\sign-up`)
-    .post(postSignUp)
+router.post('/sign-up', postSignUp)
 
 module.exports = router;
