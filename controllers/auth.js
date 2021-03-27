@@ -4,6 +4,9 @@ const bcrypt = require('bcrypt');
 
 const validRequest = require(`../utils/valid-request`)
 
+// package requirement
+const path = require(`path`)
+
 // @desc: create new user
 // @route: POST /sign-Up
 // @access: Public
@@ -13,7 +16,10 @@ exports.postSignUp = async (req, res, next) => {
         // check if the email is aready used
         let result = await userSchema.findOne({email: req.body.email});
         if (result) {
-            
+            const err = {
+                code: 11000
+            }
+            throw err
         }
         
         // validation data
@@ -32,8 +38,7 @@ exports.postSignUp = async (req, res, next) => {
         
         // chech if there invalid data
         const errorMessage = validRequest.result()
-
-
+        
         if (Object.keys(errorMessage[0]) != 0) {
             throw errorMessage
         }
@@ -47,8 +52,11 @@ exports.postSignUp = async (req, res, next) => {
             email: req.body.email,
             password: incryptPassword 
         })
+
+        // save data in session cookies
         req.session._id = result._id
-        // send respone
+
+        // send correct respone
         return res.status(201).json({
             success: true, 
             message: `created new account`
@@ -56,7 +64,54 @@ exports.postSignUp = async (req, res, next) => {
         
     } catch (e) {
         next(e)
-
     }
+}
 
+// @desc: login user account
+// @route: POST /login
+// @access: public
+exports.postLogin = async (req, res, next) => {
+    try {
+        let err = {};
+        // check email
+        let userData = await userSchema.findOne({email: req.body.email});
+
+        if (!userData) {
+            err.statusCode = 400;
+            throw new next(err)
+        }
+
+        // check password
+        let result = await bcrypt.compare(req.body.password, userData.password);
+        if (!result) 
+            throw new next(err);
+
+        // save data in session cookies
+        req.session._id = userData._id
+
+        // send correct respone
+        return res.status(200).json({
+            success: true, 
+            message: `user login successfully`
+        })
+
+
+    } catch (e) {
+        next(e)
+    }
+}
+
+// @desc: logout user account
+// @route: GET /logout
+// @access: privite
+exports.logoutUser = async (req, res, next) => {
+    try {
+        // destroy session cookies
+         req.session.destroy((err) => {
+            res.status(204).clearCookie("connect.sid").send('cleared cookie');
+         });
+
+    } catch (e) {
+        next(e)
+    }
 }

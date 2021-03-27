@@ -19,6 +19,10 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: [true, `please add password`]
+    },
+    notesId: {
+        type: [mongoose.Types.ObjectId],
+
     }
 })
 

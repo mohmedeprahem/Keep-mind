@@ -18,6 +18,8 @@ if(process.env.NODE_ENV === `development`) {
 
 console.log(process.env.MONGO_URI)
 
+app.use(express.static(path.join(__dirname, 'public')));
+
 // Add config files
 const connectDB = require(`./config/db`);
 
@@ -33,18 +35,19 @@ app.use(
 
 app.use(express.json())
 
+// store session in mongodb
 const store = new MongoDBStore({
   uri: process.env.MONGO_URI,
   collection: 'mySessions'
 });
 
-// c
+// use session
 app.use(session({
   secret: 'keyboard cat',
   resave: false,
   saveUninitialized: false,
   cookie: { 
-    secure: true,
+    secure: false,
     maxAge:  1000 * 60 * 60 * 24 * 90
   },
   store: store
@@ -55,6 +58,10 @@ app.use(session({
 // routes files
 const authRoutes = require(`./routes/auth`);
 app.use(authRoutes);
+const userRoutes = require(`./routes/user`);
+app.use(userRoutes);
+const noteRoutes = require(`./routes/note`);
+app.use(noteRoutes);
 
 // middlewares files
 const errorHander = require(`./middlewares/error-handler`)

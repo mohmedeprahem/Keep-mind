@@ -5,9 +5,17 @@ const express = require('express');
 const router = express.Router();
 
 // controllers files
-const { postSignUp } = require('../controllers/auth');
+const { 
+    postSignUp,
+    postLogin,
+    logoutUser, 
+} = require('../controllers/auth');
 
 // Run middlewares
 router.post('/sign-up', postSignUp)
+
+router.post('/auth/login', postLogin)
+
+router.get('/logout', logoutUser)
 
 module.exports = router;
