@@ -20,10 +20,8 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, `please add password`]
     },
-    notesId: {
-        type: [mongoose.Types.ObjectId],
-
-    }
+    notesId: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Note' }]
+    
 })
 
 const User = module.exports = mongoose.model(`User`, userSchema);

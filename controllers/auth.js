@@ -8,7 +8,7 @@ const validRequest = require(`../utils/valid-request`)
 const path = require(`path`)
 
 // @desc: create new user
-// @route: POST /sign-Up
+// @route: POST /api/v1/sign-up
 // @access: Public
 exports.postSignUp = async (req, res, next) => {
     try {
@@ -68,7 +68,7 @@ exports.postSignUp = async (req, res, next) => {
 }
 
 // @desc: login user account
-// @route: POST /login
+// @route: POST /api/v1/login
 // @access: public
 exports.postLogin = async (req, res, next) => {
     try {
@@ -97,12 +97,13 @@ exports.postLogin = async (req, res, next) => {
 
 
     } catch (e) {
+        console.log(e)
         next(e)
     }
 }
 
 // @desc: logout user account
-// @route: GET /logout
+// @route: GET /api/v1/logout
 // @access: privite
 exports.logoutUser = async (req, res, next) => {
     try {

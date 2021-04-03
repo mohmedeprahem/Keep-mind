@@ -12,10 +12,10 @@ const {
 } = require('../controllers/auth');
 
 // Run middlewares
-router.post('/sign-up', postSignUp)
+router.post('/api/v1/sign-up', postSignUp)
 
-router.post('/auth/login', postLogin)
+router.post('/api/v1/login', postLogin)
 
-router.get('/logout', logoutUser)
+router.get('/api/v1/logout', logoutUser)
 
 module.exports = router;

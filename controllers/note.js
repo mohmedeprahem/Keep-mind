@@ -5,7 +5,7 @@ const noteSchema = require(`../models/note`);
 const validRequest = require(`../utils/valid-request`);
 
 // @desc: Add new note
-// @route: POST /add-note
+// @route: POST /api/v1/note
 // @access: privite
 exports.postNote = async (req, res, next) => {
     try { 
@@ -45,6 +45,30 @@ exports.postNote = async (req, res, next) => {
         
     } catch (e) {
         console.log(e)
+        next(e)
+    }
+}
+
+// @desc: get notes
+// @route: get /api/v1/notes
+// @access: privite
+exports.getNotes = async (req, res, next) => {
+    try {
+        // get notes from db
+        const result = await userSchema.findById(req.session._id).select(`notesId -_id`).populate('notesId').exec();
+
+        // send respone to claint
+        res.status(200).json({
+            success: true,
+            message: `notes of user`,
+            data: {
+                kind: 'notes',
+                items: result
+            }
+        })
+
+    } catch (e) {
+        console.log(e);
         next(e)
     }
 }

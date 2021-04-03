@@ -9,7 +9,9 @@ const {
     getUserInfo
 } = require('../controllers/user');
 
-
+// @desc: get user info
+// @route: GET /user
+// @access: privite
 router.get('/user', getUserInfo)
 
 
