@@ -21,11 +21,11 @@ exports.postNote = async (req, res, next) => {
         validRequest.body(`description`, req).maxLength(999);
 
         // check if there invalid data
-        const errorMessage = validRequest.result()
+        const errorMessage = validRequest.result();
         
         if (Object.keys(errorMessage[0]) != 0) {
-            throw errorMessage
-        }
+            throw errorMessage;
+        };
         
         // create new note
         const noteInfo = await noteSchema.create(req.body);
@@ -33,7 +33,7 @@ exports.postNote = async (req, res, next) => {
         // Add note's id to user docuomention
         const result = await userSchema.findByIdAndUpdate(req.session._id, { 
             $push: {
-                notesId: noteInfo._id 
+                notesId: noteInfo._id
             }
         });
 
@@ -41,11 +41,11 @@ exports.postNote = async (req, res, next) => {
         return res.status(201).json({
             saccuss: true,
             message: `create new note`
-        })
+        });
         
     } catch (e) {
-        console.log(e)
-        next(e)
+        console.log(e);
+        next(e);
     }
 }
 
@@ -65,10 +65,10 @@ exports.getNotes = async (req, res, next) => {
                 kind: 'notes',
                 items: result
             }
-        })
+        });
 
     } catch (e) {
         console.log(e);
-        next(e)
-    }
+        next(e);
+    };
 }

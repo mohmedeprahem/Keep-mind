@@ -13,11 +13,11 @@ const {
 // @desc: Add new note
 // @route: POST /api/v1/note
 // @access: privite
-router.post('/api/v1/note', postNote)
+router.post('/api/v1/note', postNote);
 
 // @desc: get notes
 // @route: get /api/v1/notes
 // @access: privite
-router.get('/api/v1/notes', getNotes)
+router.get('/api/v1/notes', getNotes);
 
 module.exports = router;

@@ -2,10 +2,10 @@
 const userSchema = require(`../models/user`);
 const bcrypt = require('bcrypt');
 
-const validRequest = require(`../utils/valid-request`)
+const validRequest = require(`../utils/valid-request`);
 
 // package requirement
-const path = require(`path`)
+const path = require(`path`);
 
 // @desc: create new user
 // @route: POST /api/v1/sign-up
@@ -19,8 +19,8 @@ exports.postSignUp = async (req, res, next) => {
             const err = {
                 code: 11000
             }
-            throw err
-        }
+            throw err;
+        };
         
         // validation data
         validRequest.body('email', req)
@@ -37,34 +37,34 @@ exports.postSignUp = async (req, res, next) => {
             .required();
         
         // chech if there invalid data
-        const errorMessage = validRequest.result()
+        const errorMessage = validRequest.result();
         
         if (Object.keys(errorMessage[0]) != 0) {
-            throw errorMessage
-        }
+            throw errorMessage;
+        };
         
         // incrypt password
-        const incryptPassword = await bcrypt.hash(req.body.password, 12)
+        const incryptPassword = await bcrypt.hash(req.body.password, 12);
 
         //  save data of new user in database
         result = await userSchema.create({
             name: req.body.name,
             email: req.body.email,
             password: incryptPassword 
-        })
+        });
 
         // save data in session cookies
-        req.session._id = result._id
+        req.session._id = result._id;
 
         // send correct respone
         return res.status(201).json({
             success: true, 
             message: `created new account`
-        })
+        });
         
     } catch (e) {
-        next(e)
-    }
+        next(e);
+    };
 }
 
 // @desc: login user account
@@ -78,8 +78,8 @@ exports.postLogin = async (req, res, next) => {
 
         if (!userData) {
             err.statusCode = 400;
-            throw new next(err)
-        }
+            throw new next(err);
+        };
 
         // check password
         let result = await bcrypt.compare(req.body.password, userData.password);
@@ -87,19 +87,19 @@ exports.postLogin = async (req, res, next) => {
             throw new next(err);
 
         // save data in session cookies
-        req.session._id = userData._id
+        req.session._id = userData._id;
 
         // send correct respone
         return res.status(200).json({
             success: true, 
             message: `user login successfully`
-        })
+        });
 
 
     } catch (e) {
-        console.log(e)
-        next(e)
-    }
+        console.log(e);
+        next(e);
+    };
 }
 
 // @desc: logout user account
@@ -113,6 +113,6 @@ exports.logoutUser = async (req, res, next) => {
          });
 
     } catch (e) {
-        next(e)
-    }
+        next(e);
+    };
 }
