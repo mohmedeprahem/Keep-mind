@@ -95,9 +95,12 @@ class ErrorHandler {
 
     // return errors
     result () {
-        const errorMessage = this.r
+        let errorMessage = this.r
+        if (Object.keys(errorMessage[0]) == 0) {
+            return next(new ErrorHandler(errorMessage, 400))
+        };
         this.r = [{}]
-        return errorMessage
+        return -1;
     }
 
     // validation required 
